@@ -1,0 +1,22 @@
+PREPROCESSING & DATA REFINERY
+---------------------------
+File: src/preprocessing.py
+File: src/feature_engineering.py
+
+STEPS TAKEN:
+1.  **Column Mapping**: Data often arrived with varying names ('Summary', 'Sentiment', 'Review'). We implemented a fuzzy-mapping system to always normalize input to 'Text' and 'Label'.
+2.  **Cleaning Logic**:
+    *   URL & HTML Removal: Used regex to strip links and tags.
+    *   Emoji Demojization: Converted icons like 😊 into readable text `:smiling_face:` to preserve emotional tone for the model.
+    *   Punctuation & Slang: Used a custom slang map (e.g., 'gr8' -> 'great') and removed noise punctuation while being careful not to strip important context.
+    *   Stopwords: Used NLTK's standard English set but avoided stripping words that might carry sentiment context.
+    *   Lemmatization: Used WordNetLemmatizer to reduce words like 'loving', 'loved' to their root form 'love'.
+
+MAPPING LABELS:
+We used scikit-learn's LabelEncoder to convert textual labels into numerical classes:
+- 0: negative
+- 1: neutral
+- 2: positive
+
+TF-IDF VECTORIZATION:
+Converted text into numerical features using TfidfVectorizer (Max 15,000 features). Used `sublinear_tf=True` to dampen the effect of highly frequent but relatively less important words.

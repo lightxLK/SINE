@@ -1,0 +1,42 @@
+# ── Core ──────────────────────────────────────────
+# Unpinned — pip will pick the newest wheels compatible with Python 3.13
+pandas
+numpy
+
+# ── NLP ───────────────────────────────────────────
+nltk
+spacy
+emoji
+
+# ── ML ────────────────────────────────────────────
+scikit-learn
+xgboost
+imbalanced-learn
+
+# ── Transformers (BERT) ───────────────────────────
+transformers
+# ⚠ torch must be installed SEPARATELY — see README
+datasets
+
+# ── Visualization ─────────────────────────────────
+matplotlib
+seaborn
+plotly
+wordcloud
+
+# ── Web UI ────────────────────────────────────────
+streamlit
+
+# ── API Backend ───────────────────────────────────
+fastapi
+uvicorn[standard]
+
+# ── Optimization ──────────────────────────────────
+optuna
+
+# ── Explainability ────────────────────────────────
+shap
+
+# ── Utilities ─────────────────────────────────────
+joblib
+python-dotenv

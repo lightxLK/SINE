@@ -1,0 +1,25 @@
+SYSTEM ARCHITECTURE (FINAL ACTIVE SPECIALIST ENGINE)
+--------------------------------------------------
+File: Final Architecture Doc 2026
+
+Our project implements a **Multi-Tiered Specialist Inference Engine** to correctly identify nuanced and sarcastic product sentiment.
+
+1.  **DATA MINING LAYER (Research Strategy)**
+    - Principle: Active Learning & Sarcasm Mining.
+    - Workflow: Identified "Ironic Dissonance" (Low Rate + Positive words) across 200,000 reviews to create a 6,000-row "Hard Cases" training set.
+
+2.  **NEURAL SPECIALIST LAYER (Intelligence Selection)**
+    - Model: **DistilRoBERTa Specialized** (models/sarcasm_specialist).
+    - Architecture: Transformers (Multi-headed Self-Attention).
+    - Strength: Smaller, faster, and more context-aware than BERT-base. Specifically trained to recognize sarcasm and subtle negativity that baseline models misclassify.
+
+3.  **FASTAPI INFERENCE LAYER (Backend)**
+    - Service: Dynamic FastAPI endpoints serving real-time predictions.
+    - Principles: Uses asynchronous pipeline serving to handle concurrent requests from the dashboard.
+
+4.  **GLASSMORPHISM DASHBOARD (Frontend)**
+    - Interface: Professional, emoji-free data visualization toolkit.
+    - Interpretability: Allows for comparative side-by-side analysis of model results and confidence metrics.
+
+CONCLUSION:
+The architecture is strategically designed to solve the "Sarcasm Gap" in Sentiment Analysis by using an **Active Data Mining** pre-training phase combined with a **State-of-the-Art RoBERTa Transformer**.

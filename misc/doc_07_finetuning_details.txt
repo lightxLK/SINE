@@ -1,0 +1,28 @@
+BERT FINE-TUNING & CONTEXT-AWARE REWORK
+--------------------------------------
+File: src/train_bert_small.py
+Date: 2026-04-03
+
+RATIONALE FOR REWORK:
+After evaluating the classical Random Forest and XGBoost models, it was discovered that they failed on complex linguistic features such as:
+1. **Sarcasm**: "Perfectly mis-crafted."
+2. **Contextual Negation**: "Thankful I didn't buy this."
+3. **Pessimism**: Subtle negative branding sentiment.
+
+FINE-TUNING CONFIGURATION:
+To solve this, we initiated a context-aware fine-tuning of the `bert-base-uncased` transformer model. 
+- **Model Type**: Transformer / Sequence Classification.
+- **Hardware Architecture**: CPU-optimized execution (using `accelerate` library).
+- **Training Samples**: 3,000 documents (Balanced: 1,000 Pos, 1,000 Neu, 1,000 Neg).
+- **Epochs**: 3
+- **Batch Size**: 8 (Optimized for CPU RAM limits).
+- **Learning Rate**: 2e-5 (Standard for stable BERT fine-tuning).
+- **Optimizer**: AdamW with weight decay (0.01).
+
+TRAINING CHARACTERISTICS (CPU):
+- **Processing Speed**: ~3.0 seconds per iteration (batch of 8).
+- **Total Steps**: 900 steps.
+- **Total Training Time**: Estimated ~45 minutes.
+
+METHODOLOGY FOR ACADEMIC REPRODUCIBILITY:
+We used the Hugging Face `Trainer` API integrated with `accelerate`. The model learns bidirectional context, allowing it to understand that "perfectly" in front of a negative word creates a negative overall sentiment. This is a significant advancement over the previous "Bag-of-Words" methodology.

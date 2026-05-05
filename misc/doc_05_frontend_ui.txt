@@ -1,0 +1,24 @@
+FRONTEND & PROFESSIONAL UI DESIGN
+----------------------------------
+File: app/streamlit_app.py
+
+DESIGN PHILOSOPHY:
+We used a **Premium Professional Aesthetic** to ensure the project looks mature and academic.
+1.  **Emoji-Free Protocol**: Struck out all emojis to ensure a high-end, serious brand identity.
+2.  **Custom CSS (Glassmorphism)**: Used Streamlit's `st.markdown` with `unsafe_allow_html` to inject a custom theme with:
+    *   **Translucent Cards**: Soft backgrounds with 12px blur for a modern "Glass" feel.
+    *   **Linear Gradients**: Soft blue-to-deep-blue gradients instead of the standard gray.
+    *   **Color-Responsive UI**: Sentiment cards (Positive/Neutral/Negative) glow in Green, Amber, or Red.
+3.  **Local Fallback Logic**: Implemented a "Single Command" system where the UI can automatically load the models **locally** if it can't find the FastAPI server.
+
+REVOLUTIONARY FEATURES FOR AI REPRODUCIBILITY:
+- **Instant Predict**: A high-confidence scorecard with a gauge chart for results.
+- **Intelligence EDA**: Dynamic Plotly charts (Bar & Pie) to visualize the training data distribution.
+- **Model Explainer (XAI)**:
+    *   Uses **TF-IDF Feature Weights** to show you exactly which words the model was looking at.
+    *   Essential for debugging misclassifications (like sarcasm).
+- **Responsive Gauge**: Shows model confidence (0-100%) dynamically.
+- **Downloadable CSVs**: For batch processing large review sets.
+
+ATTRIBUTION:
+Developed by **Lokesh Patra** (Capstone 2026) | [https://lightxlk.github.io/]

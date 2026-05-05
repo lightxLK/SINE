@@ -1,0 +1,18 @@
+ACTIVE DATA MINING & "IRONIC DISSONANCE" RESEARCH
+-----------------------------------------------
+File: Research Methodology Case Study 2026
+
+THE PROBLEM:
+General-purpose sentiment models (like standard BERT) often fail on sarcasm because they treat words like "Impressive" or "Great" as always positive. 
+
+THE RESEARCH BREAKTHROUGH:
+To solve this without manual rules, we developed an "Active Mining" workflow to create a specialist training set.
+
+METHODOLOGY (MINING LOGIC):
+1.  **Dataset Size**: 205,052 Rows.
+2.  **Dissonance Filter**: We programmatically identified reviews where the "Rate" (Star Rating) was 1 or 2, but the text contained "Positive Intensifiers" (Wow, Impressive, Excellent, Amazing).
+3.  **Result**: We extracted 336 "Pure Sarcasm" cases that were originally confusing the baseline models.
+4.  **Augmentation**: We combined these 336 cases with a balanced subset of 6,000 normal reviews (Negative, Neutral, Positive).
+
+RESEARCH OUTCOME:
+By training specifically on these "Ironic Dissonance" cases, the model (DistilRoBERTa) learns the deep relationship between a "Rating" (Truth) and a "Review" (Expression). It learns to look for the "But" in a sentence that signifies a sarcastic shift.

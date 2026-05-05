@@ -1,0 +1,17 @@
+SYSTEM ARCHITECTURE & API SERVICE
+---------------------------------
+File: app/api.py
+
+ARCHITECTURE OVERVIEW:
+Our system uses a **Decoupled Architecture** to allow scalability and maintainability:
+1.  **Backend (FastAPI)**: Serves all the machine learning models. Built specifically to be asynchronous (using asyncio) to handle multiple prediction requests simultaneously. 
+2.  **Inference Engine**: We developed a caching mechanism (`_models` dictionary) to keep classical models (LR, RF, XGB) pre-loaded in memory for zero-latency response times.
+3.  **Cross-Origin Support (CORS)**: Enabled to allow browser-based calls.
+4.  **Endpoint**: `/predict` (POST)
+    - Receives: `text` (JSON string) and `model` choice ('rf', 'lr', 'xgb', 'bert').
+    - Returns: `sentiment` (decoded label), `confidence` (0.0 - 1.0), `model_used`, and `clean_text` (debugging).
+
+API PERFORMANCE:
+- **Startup Time**: ~12 seconds (heaviest part is loading the 1.5 GB Random Forest model).
+- **Latency**: Sub-millisecond for classical models (excluding network overhead).
+- **Graceful Error Handling**: Implemented custom HTTPExceptions for "model not loaded" or "invalid input" scenarios.

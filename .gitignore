@@ -1,0 +1,32 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Large ML model files
+models/
+*.safetensors
+*.pkl
+optimizer.pt
+rng_state.pth
+scheduler.pt
+training_args.bin
+
+# Checkpoints
+checkpoint-*/
+
+# HuggingFace cache
+.cache/
+*.incomplete
+
+# Large zips in misc
+misc/ilovepdf_extracted-pages.zip
+misc/Sentiment-Analysis-on-Online-Product-Reviews-master.zip
+
+# results with checkpoints
+misc/results_sarcasm/
+
+# App cache
+app/__pycache__/
+src/__pycache__/

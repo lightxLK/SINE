@@ -1,0 +1,26 @@
+BERT & CONTEXT-AWARE INTELLIGENCE
+--------------------------------
+File: src/train_bert_small.py (FORTHCOMING)
+File: src/models.py (BERT fine-tuning)
+
+THE PROBLEM:
+Classical Bag-of-Words models (RF, XGB, LR) don't understand context. They see individual words like "wow" and "thankful" as positive, even if used sarcastically ("wow, thankful I didn't buy this trash!"). 
+
+THE SOLUTION:
+**BERT (Bidirectional Encoder Representations from Transformers)**. 
+BERT reads the entire sentence at once, understanding the bidirectional relationship between words. This is **Context-Aware Sentiment Analysis**.
+
+STRATEGIC CPU FINE-TUNING PLAN:
+- **Base Model**: `bert-base-uncased` (Pre-trained on millions of English sentences).
+- **Dataset Strategy**: Balanced Sampling (equal parts Positive, Neutral, Negative) from the 200k Dataset-SA.csv.
+- **CPU Constraints**: On a GPU-less machine, fine-tuning 200,000 rows is impossible. We will use a **High-Quality Subset of 3,000-5,000 reviews**. This is enough to teach BERT the "sarcasm patterns" needed for this project.
+- **Optimization**: We'll use a learning rate of 2e-5 and 3-4 training epochs.
+
+TECHNICAL IMPLEMENTATION:
+- **Hugging Face Transformers**: For the model architecture.
+- **PyTorch**: As the underlying tensor engine.
+- **Early Stopping**: To prevent overfitting on local CPU runs.
+
+EXPECTED RESULT:
+A model that correctly classifies "perfectly mis-crafted" as **NEGATIVE**, even though it contains the positive word "perfectly." 
+This moves the project from "Simple ML" to "State-of-the-Art Deep Learning."
